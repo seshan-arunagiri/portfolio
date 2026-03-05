@@ -1,0 +1,44 @@
+Seshan A
+♂phone7402123030 —/envel⌢peseshan.arunagiri@gmail.com —/linkedinLinkedIn —/githubGitHub
+Professional Summary
+High-impact Software Developer with strong foundation in Computer Science and focus on AI-driven applications. Skilled in
+building scalable solutions using Java and Python. Proven experience in IoT and Machine Learning projects from conception
+to deployment.
+Technical Skills
+•Languages: Python, Java (Core & Advanced), SQL
+•Frameworks/Tools: FastAPI, TensorFlow/Keras, OpenCV, ESP32, Linux
+•Core CS: Data Structures, Algorithms, Big Data Analytics, Machine Learning
+•Soft Skills: Leadership, Critical Thinking, Team Collaboration
+Work Experience
+F ull Stack Development Intern
+Technology Intern
+–Developed responsive web applications using Java backends and Python microservices
+–Integrated Machine Learning models into existing web systems
+–Solved 100+ algorithmic challenges on LeetCode using Java
+–Collaborated in Agile team for debugging and testing
+Key Projects
+Project Shield
+Lead Developer – AI & IoT
+–Built AI-powered IoT system using ESP32 for detecting LT power line faults
+–Developed backend using Python FastAPI
+–Automated fault classification and isolation
+Emotion Heatmap Generator
+Computer Vision & NLP
+–Multimodal emotion detection from YouTube audio and video
+–Facial expression recognition and speech sentiment analysis
+Online Complaint Management System
+Full Stack Development
+–Role-based access control and secure authentication
+–Automated complaint workflow and reporting
+Education
+V.S.B Engineering College, Karur 2023 – Present
+B.Tech Information Technology (CGPA: 7.95)
+TNPL Higher Secondary School, Kathikapuram 2022 – 2023
+12th Standard (HSC)
+Certifications
+•NPTEL – Programming in Java (Elite/Silver)
+•NPTEL – Big Data Computing
+•NPTEL – Data Science for Engineers
+Languages & Interests
+•Languages: Tamil (Native), English (Fluent)
+•Interests: Competitive Programming, Linux System Administration

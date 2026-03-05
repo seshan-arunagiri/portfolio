@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seshan A - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Montserrat:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+
+<body data-theme="heaven">
+
+    <!-- Transition Overlays -->
+    <div class="transition-overlay" id="transitionOverlay"></div>
+
+    <!-- Grim Reaper Transition Overlay -->
+    <div id="reaperTransition" class="reaper-transition">
+        <div class="reaper-character" id="reaperCharacter">
+            <svg class="reaper-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <!-- Scythe Handle -->
+                <rect x="70" y="20" width="4" height="80" fill="#5c3a21" transform="rotate(-15 70 20)" />
+                <!-- Scythe Blade -->
+                <path d="M 40,20 C 40,-5 90,0 95,20 C 80,10 60,15 70,25 Z" fill="#f2f2f2" class="reaper-blade" />
+                <!-- Hood/Cloak -->
+                <path d="M 30,50 C 30,10 80,15 75,50 L 90,100 L 10,100 Z" fill="#111" />
+                <!-- Face shadow -->
+                <ellipse cx="50" cy="45" rx="15" ry="22" fill="#000" />
+                <!-- Glowing Eyes -->
+                <circle cx="43" cy="42" r="3" fill="#ff4500" class="reaper-eye" />
+                <circle cx="57" cy="42" r="3" fill="#ff4500" class="reaper-eye" />
+            </svg>
+        </div>
+        <div class="slash-line" id="slashLine"></div>
+    </div>
+
+    <!-- Excalibur Transition Overlay -->
+    <div id="angelTransition" class="angel-transition">
+        <!-- Ground/Rock for excalibur to strike -->
+        <div class="excalibur-rock" id="excaliburRock">
+            <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                <path d="M 20,100 L 50,40 L 90,20 L 120,30 L 160,50 L 180,100 Z" fill="#2c3e50" />
+                <path d="M 40,100 L 70,50 L 100,30 L 130,40 L 160,100 Z" fill="#34495e" />
+                <!-- Crack that opens when sword strikes -->
+                <path d="M 100,30 L 95,50 L 105,70 L 100,100" stroke="#ffd700" stroke-width="3" fill="none"
+                    class="rock-crack" />
+            </svg>
+        </div>
+
+        <!-- The Sword Excalibur -->
+        <div class="excalibur-sword" id="excaliburSword">
+            <svg viewBox="0 0 100 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Pommel -->
+                <circle cx="50" cy="20" r="10" fill="#ffd700" />
+                <circle cx="50" cy="20" r="5" fill="#e74c3c" />
+                <!-- Grip -->
+                <rect x="43" y="30" width="14" height="40" fill="#8e44ad" />
+                <line x1="43" y1="35" x2="57" y2="45" stroke="#ffd700" stroke-width="2" />
+                <line x1="43" y1="45" x2="57" y2="55" stroke="#ffd700" stroke-width="2" />
+                <line x1="43" y1="55" x2="57" y2="65" stroke="#ffd700" stroke-width="2" />
+                <!-- Crossguard -->
+                <path d="M 10,70 Q 50,90 90,70 L 95,80 Q 50,100 5,80 Z" fill="#ffd700" />
+                <!-- Blade -->
+                <path d="M 40,85 L 60,85 L 55,270 L 50,290 L 45,270 Z" fill="#ecf0f1" />
+                <!-- Blade fuller (groove) -->
+                <line x1="50" y1="85" x2="50" y2="250" stroke="#bdc3c7" stroke-width="2" />
+                <!-- Glow effect aura -->
+                <path d="M 35,80 L 65,80 L 60,275 L 50,300 L 40,275 Z" fill="rgba(255, 215, 0, 0.3)" class="sword-aura"
+                    filter="blur(5px)" />
+            </svg>
+        </div>
+
+        <!-- Blast Explosion Effects -->
+        <div class="blast-ring" id="blastRing"></div>
+        <div class="blast-core" id="blastCore"></div>
+        <div class="blast-beam" id="blastBeam"></div>
+
+        <!-- Rock Debris -->
+        <div class="debris d1"></div>
+        <div class="debris d2"></div>
+        <div class="debris d3"></div>
+        <div class="debris d4"></div>
+        <div class="debris d5"></div>
+        <div class="debris d6"></div>
+
+        <div class="holy-flash" id="holyFlash"></div>
+    </div>
+
+    <!-- Background Effects Container -->
+    <div class="background-effects" id="bgEffects">
+        <canvas id="effectCanvas"></canvas>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Seshan A</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#skills">Skills</a></li>
+        </ul>
+        <div class="theme-switch-wrapper">
+            <span class="theme-icon heaven-icon"><i class="fa-solid fa-bolt"></i></span>
+            <label class="theme-switch" for="checkbox">
+                <input type="checkbox" id="checkbox" />
+                <div class="slider round"></div>
+            </label>
+            <span class="theme-icon hell-icon"><i class="fa-solid fa-fire"></i></span>
+        </div>
+    </nav>
+
+    <!-- Custom Cursor -->
+    <div class="custom-cursor" id="customCursor"></div>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero section-spacing">
+            <!-- Theme Decorations -->
+            <div class="theme-decoration heaven-deco"><i class="fa-solid fa-feather-pointed"></i></div>
+            <div class="theme-decoration heaven-deco heaven-deco-2"><i class="fa-solid fa-bolt"></i></div>
+            <div class="theme-decoration hell-deco"><i class="fa-solid fa-skull"></i></div>
+            <div class="theme-decoration hell-deco hell-deco-2"><i class="fa-brands fa-free-code-camp"></i></div>
+
+
+
+
+            <div class="hero-content">
+                <h2 class="sub-title">Software Developer</h2>
+                <h1 class="main-title">Seshan Arunagiri</h1>
+                <p class="hero-desc">Building scalable, AI-driven solutions from conception to deployment.</p>
+                <div class="cta-buttons">
+                    <a href="#projects" class="btn primary-btn">View My Work</a>
+                    <a href="#" class="btn secondary-btn" id="contactBtn">Contact Me</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://www.linkedin.com/in/seshan-a-82131b363" target="_blank" aria-label="LinkedIn"><i
+                            class="fa-brands fa-linkedin"></i></a>
+                    <a href="https://github.com/seshan-arunagiri" target="_blank" aria-label="GitHub"><i
+                            class="fa-brands fa-github"></i></a>
+                    <a href="seshanResumeF.pdf" target="_blank" aria-label="Resume" title="View Resume"><i
+                            class="fa-solid fa-file-lines"></i></a>
+                </div>
+            </div>
+            <div class="hero-image-container">
+                <div class="dual-wings-decoration"></div>
+                <div class="image-border"></div>
+                <img src="Gemini_Generated_Image_9ihuqm9ihuqm9ihu (2).png" alt="Seshan Arunagiri" class="hero-image">
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section-spacing">
+            <h2 class="section-title">Professional Summary</h2>
+            <div class="content-box">
+                <p>High-impact Software Developer with a strong foundation in Computer Science and a focus on AI-driven
+                    applications. Skilled in building scalable solutions using Java and Python. Proven experience in IoT
+                    and Machine Learning projects from conception to deployment.</p>
+                <p><strong>Education:</strong> V.S.B Engineering College, Karur (B.Tech IT, CGPA: 7.95) | TNPL Higher
+                    Secondary School (12th: 2022-2023)</p>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section-spacing" style="position: relative;">
+            <!-- Separated Dragons Container (Hell only) -->
+            <div class="dragon-container left">
+                <i class="fa-brands fa-d-and-d wings hell-wings"></i>
+            </div>
+            <div class="dragon-container right">
+                <i class="fa-brands fa-d-and-d wings hell-wings"></i>
+            </div>
+
+            <!-- Glowing Golden Tree Container (Heaven only) -->
+            <div class="tree-container left">
+                <i class="fa-brands fa-pagelines golden-tree"></i>
+            </div>
+            <div class="tree-container right">
+                <i class="fa-brands fa-pagelines golden-tree"></i>
+            </div>
+            <h2 class="section-title">Work Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content content-box">
+                        <h3>Full Stack Development Intern</h3>
+                        <h4>Technology Intern</h4>
+                        <ul>
+                            <li>Developed responsive web applications using Java backends and Python microservices.</li>
+                            <li>Integrated Machine Learning models into existing web systems.</li>
+                            <li>Solved 100+ algorithmic challenges on LeetCode using Java.</li>
+                            <li>Collaborated in Agile team for debugging and testing.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section-spacing">
+            <h2 class="section-title">Key Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card content-box">
+                    <h3>Project Shield</h3>
+                    <p class="role">Lead Developer – AI & IoT</p>
+                    <ul>
+                        <li>Built AI-powered IoT system using ESP32 for detecting LT power line faults.</li>
+                        <li>Developed backend using Python FastAPI.</li>
+                        <li>Automated fault classification and isolation.</li>
+                    </ul>
+                </div>
+                <div class="project-card content-box">
+                    <h3>Emotion Heatmap Generator</h3>
+                    <p class="role">Computer Vision & NLP</p>
+                    <ul>
+                        <li>Multimodal emotion detection from YouTube audio and video.</li>
+                        <li>Facial expression recognition and speech sentiment analysis.</li>
+                    </ul>
+                </div>
+                <div class="project-card content-box">
+                    <h3>Online Complaint Management System</h3>
+                    <p class="role">Full Stack Development</p>
+                    <ul>
+                        <li>Role-based access control and secure authentication.</li>
+                        <li>Automated complaint workflow and reporting.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section-spacing">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-container">
+                <div class="skill-category content-box">
+                    <h3>Languages</h3>
+                    <div class="skill-tags">
+                        <span><i class="fa-brands fa-python"></i> Python</span>
+                        <span><i class="fa-brands fa-java"></i> Java </span>
+                        <span><i class="fa-solid fa-database"></i> SQL</span>
+                        <span><i class="fa-solid fa-language"></i> Tamil / English</span>
+                    </div>
+                </div>
+                <div class="skill-category content-box">
+                    <h3>Frameworks/Tools</h3>
+                    <div class="skill-tags">
+                        <span><i class="fa-solid fa-fire-flame-curved"></i> FastAPI</span>
+                        <span><i class="fa-solid fa-brain"></i> TensorFlow</span>
+                        <span><i class="fa-solid fa-eye"></i> OpenCV</span>
+                        <span><i class="fa-solid fa-microchip"></i> ESP32</span>
+                        <span><i class="fa-brands fa-linux"></i> Linux</span>
+                    </div>
+                </div>
+                <div class="skill-category content-box">
+                    <h3>Core CS & Tech</h3>
+                    <div class="skill-tags">
+                        <span><i class="fa-solid fa-network-wired"></i> Data Structures</span>
+                        <span><i class="fa-solid fa-gears"></i> Algorithms</span>
+                        <span><i class="fa-solid fa-server"></i> Big Data</span>
+                        <span><i class="fa-solid fa-robot"></i> Machine Learning</span>
+                        <span><i class="fa-solid fa-wifi"></i> IoT</span>
+                    </div>
+                </div>
+                <div class="skill-category content-box">
+                    <h3>Certifications & Other</h3>
+                    <div class="skill-tags">
+                        <span><i class="fa-solid fa-medal"></i> NPTEL Python</span>
+                        <span><i class="fa-solid fa-award"></i> NPTEL Big Data</span>
+                        <span><i class="fa-solid fa-star"></i> NPTEL Data Science</span>
+                        <span><i class="fa-solid fa-laptop-code"></i> Comp. Programming</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Panel Overlay -->
+        <div class="contact-panel-overlay" id="contactPanelOverlay">
+            <div class="contact-panel content-box" id="contactPanel">
+                <button class="close-btn" id="closeContactBtn" aria-label="Close element"><i
+                        class="fa-solid fa-xmark"></i></button>
+                <h3 class="panel-title">Get In Touch</h3>
+                <div class="contact-info">
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <span>seshan.arunagiri@gmail.com</span>
+                        <button class="icon-btn" onclick="copyText('seshan.arunagiri@gmail.com', this)"
+                            title="Copy Email"><i class="fa-regular fa-copy"></i></button>
+                    </div>
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <span>7402123030</span>
+                        <button class="icon-btn" onclick="copyText('7402123030', this)" title="Copy Phone"><i
+                                class="fa-regular fa-copy"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+
+    <footer>
+        <p>&copy; 2026 Seshan A. Forged in Code.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
